@@ -1,0 +1,16 @@
+# pods are atomic, cannot be modified once created.
+# in order to reconfigure a pod, need to change this yaml file + create a new pod using a new name
+# creates a new pod using --> kubectl apply -f first-pod.yaml
+# view all pods using --> kubectl get pods
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-new-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+  - name: redis
+    image: redis:6.2.5

@@ -1,0 +1,16 @@
+# 3 types of services:
+# ClusterIP: Default service type. Gives a service a unique ip to communicate with other services within the container only
+# Nodeport: accessible from outside the cluster
+# LoadBalancer: exposes the service outside the cloud
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+  type: LoadBalancer # this configures the type of service 

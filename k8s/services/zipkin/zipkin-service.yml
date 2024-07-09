@@ -1,0 +1,14 @@
+
+# routes external traffic into the zipkin container
+apiVersion: v1
+kind: Service
+metadata:
+  name: zipkin
+spec:
+  selector:
+    app: zipkin
+  ports:
+    - protocol: TCP
+      port: 9411
+      targetPort: 9411
+  type: LoadBalancer # this configures the type of service 

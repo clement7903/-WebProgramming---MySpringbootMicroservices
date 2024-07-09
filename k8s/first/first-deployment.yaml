@@ -1,0 +1,18 @@
+# for making changes to pods, update this deployment file & apply the deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec: # defines the desired state of the object
+  replicas: 3 
+  selector:
+    matchLabels:
+      app: myapp # looks for pod labelled myapp
+  template: # for creating new pods 
+    metadata:
+      labels:
+        app: myapp 
+    spec:
+      containers:
+      - name: myapp
+        image: nginx:1.14.2
