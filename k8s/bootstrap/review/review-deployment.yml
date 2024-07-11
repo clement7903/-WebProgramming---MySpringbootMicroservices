@@ -9,7 +9,7 @@ spec: # defines the desired state of the object
   replicas: 1
   template: # for creating new pods 
     metadata:
-    name: review
+      name: review
       labels:
         app: review 
     spec:
