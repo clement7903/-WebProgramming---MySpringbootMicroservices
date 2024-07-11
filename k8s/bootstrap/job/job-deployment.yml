@@ -1,0 +1,29 @@
+# for making changes to pods, update this deployment file & apply the deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job
+  labels:
+    app: job
+spec: # defines the desired state of the object
+  replicas: 1
+  template: # for creating new pods 
+    metadata:
+    name: job
+      labels:
+        app: job 
+    spec:
+      containers:
+      - name: job
+        image: clement7903/jobmicroservice:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8082
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8s
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: job
+  
